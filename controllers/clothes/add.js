@@ -35,8 +35,6 @@ const add = async (req, res, next) => {
       });
     }
 
-    // array.push(oneFile);
-
     const data = await Cloth.create({
       ...body,
       image: array,
