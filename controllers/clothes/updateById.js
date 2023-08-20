@@ -41,7 +41,7 @@ const updateById = async (req, res, next) => {
     res.json({
       status: "success",
       code: 200,
-      data: { result },
+      result,
     });
   } catch (error) {
     next(new ErrorHandler(error.statusCode || 500, error.message));

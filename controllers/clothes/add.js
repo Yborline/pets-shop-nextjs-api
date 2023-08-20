@@ -20,7 +20,6 @@ const add = async (req, res, next) => {
     let code = 1;
     if (countProject) {
       const projectLast = await Cloth.find({}).sort({ code: -1 }).limit(1);
-      console.log(projectLast[0].code);
       code = Number(projectLast[0].code) + 1;
     }
 
