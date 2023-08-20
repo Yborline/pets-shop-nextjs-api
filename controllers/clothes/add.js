@@ -19,9 +19,9 @@ const add = async (req, res, next) => {
     const countProject = await Cloth.find({}).countDocuments({});
     let code = 1;
     if (countProject) {
-      const projectLast = await Cloth.find({}).sort({ id: -1 }).limit(1);
-
-      code = projectLast[0].id + 1;
+      const projectLast = await Cloth.find({}).sort({ code: -1 }).limit(1);
+      console.log(projectLast[0].code);
+      code = Number(projectLast[0].code) + 1;
     }
 
     const array = [];
@@ -38,7 +38,7 @@ const add = async (req, res, next) => {
 
     const data = await Cloth.create({
       ...body,
-      code,
+      code: String(code).padStart(9, "0"),
       image: array,
       owner: _id,
     });
