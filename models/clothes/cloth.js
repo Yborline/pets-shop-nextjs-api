@@ -12,6 +12,7 @@ const clothesSchema = Schema(
       minlength: 2,
       maxlength: 50,
     },
+
     code: {
       type: String,
       required: true,

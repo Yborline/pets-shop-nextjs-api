@@ -27,7 +27,7 @@ const login = async (req, res) => {
   const token = jwt.sign(
     payload,
     JWT_KEY,
-    remember === true ? {} : { expiresIn: "1h" }
+    remember === true ? { expiresIn: "30d" } : { expiresIn: "1h" }
   );
   if (token) {
     await User.findByIdAndUpdate(user._id, { token });

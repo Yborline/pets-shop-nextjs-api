@@ -7,7 +7,6 @@
 const { ErrorHandler } = require("../../utils/errorHandler");
 const { Cloth } = require("../../models");
 const uploadImg = require("./uploadImg");
-const createError = require("http-errors");
 
 const add = async (req, res, next) => {
   try {
@@ -15,19 +14,21 @@ const add = async (req, res, next) => {
     // console.log(files);
 
     const { _id } = req.user;
-    const { code: uniq } = body;
+    // const { code: uniq } = body;
     // const image = await uploadImg(file);
-    const clothes = await Cloth.findOne({ code: uniq });
+    const countProject = await Cloth.find({}).countDocuments({});
+    let code = 1;
+    if (countProject) {
+      const projectLast = await Cloth.find({}).sort({ id: -1 }).limit(1);
 
-    if (clothes) {
-      throw createError(404, `Such a code already exists!`);
+      code = projectLast[0].id + 1;
     }
 
     const array = [];
 
     for (const file of files) {
       const oneFile = await uploadImg(file);
-      // console.log(oneFile);
+
       array.push({
         url: oneFile.url,
         public_id: oneFile.public_id,
@@ -35,10 +36,9 @@ const add = async (req, res, next) => {
       });
     }
 
-    // array.push(oneFile);
-
     const data = await Cloth.create({
       ...body,
+      code,
       image: array,
       owner: _id,
     });
