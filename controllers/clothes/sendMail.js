@@ -17,7 +17,7 @@ const sendMail = async (req, res) => {
   } = req.body;
 
   const mail = {
-    from: "yasya.loy@gmail.com",
+    from: "kotovanasta1512032002@gmail.com",
     subject: `Новий заказ`,
     html: `<h1>Номер замовлення : ${numberOrder}</h1>
     <h2>Сумма заказа : ${summary}</h2>
