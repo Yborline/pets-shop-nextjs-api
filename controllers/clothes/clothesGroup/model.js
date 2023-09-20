@@ -1,6 +1,6 @@
 // const clothesOperations = require("../../models/clothes");
 const { Cloth } = require("../../../models");
-const getBlanket = async (req, res) => {
+const getModel = async (req, res) => {
   // поиск своих товаров только определенному юзеру
   // const { _id, name, email } = req.admin;
 
@@ -26,4 +26,4 @@ const getBlanket = async (req, res) => {
   });
 };
 
-module.exports = getBlanket;
+module.exports = getModel;
