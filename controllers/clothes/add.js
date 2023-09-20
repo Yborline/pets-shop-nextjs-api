@@ -29,16 +29,19 @@ const add = async (req, res, next) => {
       const oneFile = await uploadImg(file);
 
       array.push({
+        name: file.originalname,
+        size: oneFile.bytes,
         url: oneFile.url,
         public_id: oneFile.public_id,
         secure_url: oneFile.secure_url,
       });
     }
-
+    const sortArray = array.sort((a, b) => b.originalname - a.originalname);
+    console.log(array);
     const data = await Cloth.create({
       ...body,
       code: String(code).padStart(9, "0"),
-      image: array,
+      image: sortArray,
       owner: _id,
     });
 
