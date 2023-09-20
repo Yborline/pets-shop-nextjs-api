@@ -38,7 +38,7 @@ const add = async (req, res, next) => {
     const data = await Cloth.create({
       ...body,
       code: String(code).padStart(9, "0"),
-      image: array.sort((a, b) => a.size - b.size),
+      image: array,
       owner: _id,
     });
 
