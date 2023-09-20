@@ -32,7 +32,7 @@ router.get("/briefs", ctrlWrapper(model.getBriefs));
 router.get("/dress", ctrlWrapper(model.getDress));
 router.get("/hats", ctrlWrapper(model.getHats));
 router.get("/jacket", ctrlWrapper(model.getJacket));
-router.get("/overalls", ctrlWrapper(model.getOveralls));
+router.get("/overall", ctrlWrapper(model.getOveralls));
 router.get("/scarves", ctrlWrapper(model.getScarves));
 router.get("/shirt", ctrlWrapper(model.getShirt));
 router.get("/singlet", ctrlWrapper(model.getSinglet));
