@@ -1,6 +1,6 @@
 // const clothesOperations = require("../../models/clothes");
 const { Cloth } = require("../../../models");
-const getScarves = async (req, res) => {
+const getModel = async (req, res) => {
   // поиск своих товаров только определенному юзеру
   // const { _id, name, email } = req.admin;
 
@@ -8,11 +8,12 @@ const getScarves = async (req, res) => {
   //   "owner",
   //   "_id name email"
   // );
+  const { model } = req.params;
   const { page = 1, limit = 10 } = req.query;
   const skip = (page - 1) * limit;
-  const clothesAll = await Cloth.find({ model: "scarves" });
-    const allPage = Math.ceil(clothesAll.length / limit);
-  const type = await Cloth.find({ model: "scarves" }, "", {
+  const clothesAll = await Cloth.find({ model });
+  const allPage = Math.ceil(clothesAll.length / limit);
+  const type = await Cloth.find({ model }, "", {
     skip,
     limit: Number(limit),
   }).populate("owner", "_id name email");
@@ -25,4 +26,4 @@ const getScarves = async (req, res) => {
   });
 };
 
-module.exports = getScarves;
+module.exports = getModel;
