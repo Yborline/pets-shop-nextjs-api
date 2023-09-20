@@ -8,7 +8,7 @@ const uploadImg = async (file) => {
   if (!file) throw new ErrorHandler(400, "Image is required");
 
   const fileFormat = file.mimetype.split("/")[1];
-  const { base64 } = await bufferToDataURI(fileFormat, file.buffer);
+  const { base64 } = bufferToDataURI(fileFormat, file.buffer);
 
   const imageDetails = await uploadToCloudinary(base64, fileFormat);
   return imageDetails;
