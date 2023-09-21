@@ -12,7 +12,7 @@ const add = async (req, res, next) => {
   try {
     const { files, body } = req;
     // console.log(files);
-
+    console.log(body.description);
     const { _id } = req.user;
     // const { code: uniq } = body;
     // const image = await uploadImg(file);
