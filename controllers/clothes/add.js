@@ -36,7 +36,7 @@ const add = async (req, res, next) => {
         secure_url: oneFile.secure_url,
       });
     }
-    const sortArray = array.sort((a, b) => b.originalname - a.originalname);
+    const sortArray = array.sort((a, b) => a.originalname - b.originalname);
     console.log(array);
     const data = await Cloth.create({
       ...body,
