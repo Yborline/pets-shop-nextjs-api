@@ -140,7 +140,7 @@ const clothesSchema = Schema(
         "blanket",
         "jacket",
         "suit",
-        // "skinny",
+        "hoodies",
         "bomber",
         "sweatshirt",
         "trousers",
@@ -153,7 +153,8 @@ const clothesSchema = Schema(
         "dress",
         "skirt",
         "briefs",
-        "embroidery",
+        "footwear",
+        "couch",
       ],
     },
 
